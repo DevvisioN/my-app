@@ -41,11 +41,11 @@ class Currency extends React.Component {
         let isFetching = this.props.currencyList.getIn(['currencyData', 'isFetching']);
         return(
             <div className='row'>
-                <div className='col-md-12'>
-                    <DataButton bsStyle='success' onClick={this.props.getDataRequest }> Get data</DataButton>
+                <div className='col-md-6 data-button'>
+                    <DataButton clickMe={ this.getDataRequest }> Get data</DataButton>
                 </div>
-                <div className='col-md-12'>
-                    <CurrencyTable data={this.state.currencyList } isFetching={ isFetching }/>
+                <div className='col-md-6 currency'>
+                    <CurrencyTable bsClass='table' data={this.state.currencyList } isFetching={ isFetching }/>
                 </div>
             </div>
         );

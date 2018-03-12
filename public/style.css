@@ -1,0 +1,12 @@
+.currency{
+    max-height: 400px;
+    overflow: scroll;
+}
+.data-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.data-button button{
+    margin-top: 50px;
+}
