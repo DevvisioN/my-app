@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getCurrencyData } from '../actions/CurrencyActions'
 import CurrencyTable from '../components/CurrencyTable'
+import DataButton from '../components/DataButton'
 
 class Currency extends React.Component {
     constructor(props){
@@ -41,7 +42,7 @@ class Currency extends React.Component {
         return(
             <div className='row'>
                 <div className='col-md-12'>
-                    <button onClick={this.getDataRequest}>Get data</button>
+                    <DataButton bsStyle='success' onClick={this.props.getDataRequest }> Get data</DataButton>
                 </div>
                 <div className='col-md-12'>
                     <CurrencyTable data={this.state.currencyList } isFetching={ isFetching }/>
