@@ -16,7 +16,7 @@ class CurrencyTable extends React.Component {
             noDataText: this.renderWaitingScreen(),
             /*height:400,
             scrollTop:'Bottom'*/
-            //todo why i can use it`s options from here!?
+            //todo why i can`t use it`s options from here!?
         };
         return(
             <BootstrapTable data={ this.props.data } options={tableOptions}>
