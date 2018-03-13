@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getCurrencyData } from '../actions/CurrencyActions'
 import CurrencyTable from '../components/CurrencyTable'
 import DataButton from '../components/DataButton'
+import Graph from '../components/Graph'
 
 class Currency extends React.Component {
     constructor(props){
@@ -46,6 +47,10 @@ class Currency extends React.Component {
                 </div>
                 <div className='col-md-6 currency'>
                     <CurrencyTable bsClass='table' data={this.state.currencyList } isFetching={ isFetching }/>
+                </div>
+                <div className='col-md-6 dynamic-list'></div>
+                <div className='col-md-6 graph'>
+                    <Graph></Graph>
                 </div>
             </div>
         );
