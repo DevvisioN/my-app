@@ -5,7 +5,7 @@ class Graph extends React.Component{
     render(){
         return(
          <XYPlot
-            width={300}
+            width={500}
             height={300}>
             <VerticalGridLines/>
             <HorizontalGridLines/>

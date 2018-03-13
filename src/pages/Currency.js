@@ -1,9 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Row, Col, Panel } from 'react-bootstrap'
 import { getCurrencyData } from '../actions/CurrencyActions'
 import CurrencyTable from '../components/CurrencyTable'
 import DataButton from '../components/DataButton'
-import Graph from '../components/Graph'
+import CoordinatesList from '../components/CoordinatesList'
+import GraphInput from '../components/GraphInput'
 
 class Currency extends React.Component {
     constructor(props){
@@ -13,7 +15,7 @@ class Currency extends React.Component {
             base:'',
             date:'',
             currencyList: []
-        }
+        };
     this.getDataRequest = this.getDataRequest.bind(this)
     }
 
@@ -26,10 +28,8 @@ class Currency extends React.Component {
     getCurrencyList(){
           let values = [];
           let respData = this.props.currencyList.getIn(['currencyData', 'data']).rates
-
-
+          // eslint-disable-next-line
           Object.keys(respData).map(key =>{
-              console.log(key)
               values.push({value: respData[key], id: key})
           });
 
@@ -40,19 +40,28 @@ class Currency extends React.Component {
 
     render(){
         let isFetching = this.props.currencyList.getIn(['currencyData', 'isFetching']);
+        let header = (<span>Test</span>)
         return(
-            <div className='row'>
-                <div className='col-md-6 data-button'>
+            <Col md={12}>
+                <Panel header={header}>
+                <Col className='col-md-12 data-button'>
                     <DataButton clickMe={ this.getDataRequest }> Get data</DataButton>
-                </div>
-                <div className='col-md-6 currency'>
-                    <CurrencyTable bsClass='table' data={this.state.currencyList } isFetching={ isFetching }/>
-                </div>
-                <div className='col-md-6 dynamic-list'></div>
-                <div className='col-md-6 graph'>
-                    <Graph></Graph>
-                </div>
-            </div>
+                </Col>
+                </Panel>
+                <Panel header={'other data'}>
+                    <Col className='col-md-6 currency'>
+                        <CurrencyTable bsClass='table' data={this.state.currencyList } isFetching={ isFetching }/>
+                    </Col>
+                    <Col md={6} className='dynamic-list'>
+                        <CoordinatesList/>
+                    </Col>
+                </Panel>
+                <Panel header={'graph'}>
+                    <Col md={6} className='graph'>
+                        <GraphInput />
+                    </Col>
+                </Panel>
+            </Col>
         );
     }
 }
