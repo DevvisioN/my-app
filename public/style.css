@@ -3,10 +3,14 @@
     overflow: scroll;
 }
 .data-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-allign:center;
 }
 .data-button button{
     margin-top: 50px;
+}
+.dynamic-list{
+    padding: 2px;
+}
+.graph{
+    padding: 2px;
 }

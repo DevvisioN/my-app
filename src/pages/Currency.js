@@ -4,8 +4,8 @@ import { Row, Col, Panel } from 'react-bootstrap'
 import { getCurrencyData } from '../actions/CurrencyActions'
 import CurrencyTable from '../components/CurrencyTable'
 import DataButton from '../components/DataButton'
-import CoordinatesList from '../components/CoordinatesList'
-import GraphInput from '../components/GraphInput'
+import DynamicList from '../components/DynamicList'
+import Graph from '../components/Graph'
 
 class Currency extends React.Component {
     constructor(props){
@@ -40,27 +40,23 @@ class Currency extends React.Component {
 
     render(){
         let isFetching = this.props.currencyList.getIn(['currencyData', 'isFetching']);
-        let header = (<span>Test</span>)
+        let header = (<span>Get currency data</span>)
         return(
             <Col md={12}>
                 <Panel header={header}>
-                <Col className='col-md-12 data-button'>
+                <Col md={2} className='data-button'>
                     <DataButton clickMe={ this.getDataRequest }> Get data</DataButton>
                 </Col>
-                </Panel>
-                <Panel header={'other data'}>
-                    <Col className='col-md-6 currency'>
+                    <Col md={10} className='currency'>
                         <CurrencyTable bsClass='table' data={this.state.currencyList } isFetching={ isFetching }/>
                     </Col>
+                </Panel>
                     <Col md={6} className='dynamic-list'>
-                        <CoordinatesList/>
+                        <DynamicList />
                     </Col>
-                </Panel>
-                <Panel header={'graph'}>
                     <Col md={6} className='graph'>
-                        <GraphInput />
+                        <Graph/>
                     </Col>
-                </Panel>
             </Col>
         );
     }
